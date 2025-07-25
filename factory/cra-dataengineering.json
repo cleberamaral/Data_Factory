@@ -1,0 +1,9 @@
+{
+	"name": "cra-dataengineering",
+	"location": "ukwest",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f821934b-92d1-4c68-b92a-f54a31982872",
+		"tenantId": "3e3d3101-00cb-480d-a9c7-50d00870c1cc"
+	}
+}
