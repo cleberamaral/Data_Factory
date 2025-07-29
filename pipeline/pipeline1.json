@@ -51,7 +51,7 @@
 						"referenceName": "BLB_Airbnb_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "paris_weekdays.csv"
+							"filename": "customers-2000000.csv"
 						}
 					}
 				],
@@ -60,7 +60,7 @@
 						"referenceName": "BLB_Airbnb_Parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "paris_weekdays"
+							"filename": "customers"
 						}
 					}
 				]
