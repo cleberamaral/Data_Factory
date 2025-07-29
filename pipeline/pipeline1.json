@@ -30,7 +30,7 @@
 						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": "MergeFiles"
+							"copyBehavior": "FlattenHierarchy"
 						},
 						"formatSettings": {
 							"type": "ParquetWriteSettings"
@@ -51,7 +51,7 @@
 						"referenceName": "BLB_Airbnb_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "customers-2000000.csv"
+							"filename": "Amazon Sale Report.csv"
 						}
 					}
 				],
@@ -60,7 +60,7 @@
 						"referenceName": "BLB_Airbnb_Parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "customers"
+							"filename": "Amazon Sale Report"
 						}
 					}
 				]
