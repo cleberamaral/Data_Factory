@@ -49,13 +49,19 @@
 				"inputs": [
 					{
 						"referenceName": "BLB_Airbnb_CSV",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "paris_weekdays.csv"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "BLB_Airbnb_Parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "paris_weekdays"
+						}
 					}
 				]
 			}
