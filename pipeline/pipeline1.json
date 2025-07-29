@@ -51,7 +51,7 @@
 						"referenceName": "BLB_Airbnb_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "Amazon Sale Report.csv"
+							"filename": "client_data_100_sample.csv"
 						}
 					}
 				],
@@ -60,7 +60,7 @@
 						"referenceName": "BLB_Airbnb_Parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "Amazon Sale Report"
+							"filename": "client_data_sample"
 						}
 					}
 				]
