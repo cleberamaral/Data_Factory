@@ -51,7 +51,7 @@
 						"referenceName": "BLB_Airbnb_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"filename": "client_data_100_sample.csv"
+							"filename": "client_data_sample.csv"
 						}
 					}
 				],
