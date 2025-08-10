@@ -52,7 +52,11 @@
 				"outputs": [
 					{
 						"referenceName": "Raw_Data",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": "Sales",
+							"schemaname": "oltp"
+						}
 					}
 				]
 			}
