@@ -1,0 +1,65 @@
+{
+	"name": "Copy Origin",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Source Data",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "drop table if exists origin.sales",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Raw_Data",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": "Sales",
+							"schemaname": "oltp"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Raw_Data",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": "Sales",
+							"schemaname": "Origin"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
