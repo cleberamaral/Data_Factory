@@ -65,7 +65,7 @@
 						"referenceName": "DS_NAPTAN_STOP_CSV_DEST",
 						"type": "DatasetReference",
 						"parameters": {
-							"FileName": "Naptan"
+							"FileName": "Naptan.csv"
 						}
 					}
 				]
