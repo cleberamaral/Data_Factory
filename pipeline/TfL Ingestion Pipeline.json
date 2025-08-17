@@ -29,6 +29,7 @@
 					},
 					"sink": {
 						"type": "AzureDatabricksDeltaLakeSink",
+						"preCopyScript": "CREATE TABLE IF NOT EXISTS raw.Naptan\nUSING DELTA\nLOCATION 'abfss://staging@rawdatastorage1.dfs.core.windows.net/naptan';",
 						"importSettings": {
 							"type": "AzureDatabricksDeltaLakeImportCommand"
 						}
@@ -39,7 +40,7 @@
 							"referenceName": "AzureDataLakeStorage1",
 							"type": "LinkedServiceReference"
 						},
-						"path": "staging"
+						"path": "staging/Naptan"
 					}
 				},
 				"inputs": [
