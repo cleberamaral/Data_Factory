@@ -1,0 +1,22 @@
+{
+	"name": "DS_NAPTAN_STOP_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_NAPTAN_HTTP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -9,7 +9,7 @@
 		"type": "AzureDatabricksDeltaLakeDataset",
 		"typeProperties": {
 			"database": "raw",
-			"table": "Naptan"
+			"table": "naptan"
 		},
 		"schema": []
 	}
