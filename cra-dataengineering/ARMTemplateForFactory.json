@@ -340,7 +340,7 @@
 								"referenceName": "DS_NAPTAN_STOP_CSV_DEST",
 								"type": "DatasetReference",
 								"parameters": {
-									"FileName": "Naptan"
+									"FileName": "Naptan.csv"
 								}
 							}
 						]
@@ -732,7 +732,7 @@
 							"type": "Expression"
 						},
 						"folderPath": "Naptan",
-						"fileSystem": "staging"
+						"fileSystem": "raw"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
