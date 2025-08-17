@@ -3,61 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "HttpReadSettings",
-							"requestMethod": "GET"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "AzureDatabricksDeltaLakeSink",
-						"preCopyScript": "CREATE TABLE IF NOT EXISTS raw.Naptan\nUSING DELTA\nLOCATION 'abfss://staging@rawdatastorage1.dfs.core.windows.net/naptan';",
-						"importSettings": {
-							"type": "AzureDatabricksDeltaLakeImportCommand"
-						}
-					},
-					"enableStaging": true,
-					"stagingSettings": {
-						"linkedServiceName": {
-							"referenceName": "AzureDataLakeStorage1",
-							"type": "LinkedServiceReference"
-						},
-						"path": "staging/Naptan"
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_NAPTAN_STOP_CSV",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_NAPTAN_STOP_DELTA",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "Copy data1_copy1",
+				"name": "Naptan To Data Lake",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -117,7 +63,10 @@
 				"outputs": [
 					{
 						"referenceName": "DS_NAPTAN_STOP_CSV_DEST",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": "Naptan"
+						}
 					}
 				]
 			}
