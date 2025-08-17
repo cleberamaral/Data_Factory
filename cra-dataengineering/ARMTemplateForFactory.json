@@ -277,7 +277,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "Naptan To Data Lake",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -290,22 +290,25 @@
 						"userProperties": [],
 						"typeProperties": {
 							"source": {
-								"type": "XmlSource",
+								"type": "DelimitedTextSource",
 								"storeSettings": {
 									"type": "HttpReadSettings",
 									"requestMethod": "GET"
 								},
 								"formatSettings": {
-									"type": "XmlReadSettings",
-									"validationMode": "none",
-									"namespaces": true
+									"type": "DelimitedTextReadSettings"
 								}
 							},
 							"sink": {
-								"type": "AzureDatabricksDeltaLakeSink",
-								"preCopyScript": "CREATE TABLE IF NOT EXISTS raw.Naptan\nUSING DELTA\nLOCATION 'abfss://staging@rawdatastorage1.dfs.core.windows.net/naptan';",
-								"importSettings": {
-									"type": "AzureDatabricksDeltaLakeImportCommand"
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "FlattenHierarchy"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
 								}
 							},
 							"enableStaging": true,
@@ -315,6 +318,14 @@
 									"type": "LinkedServiceReference"
 								},
 								"path": "staging/Naptan"
+							},
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
 							}
 						},
 						"inputs": [
@@ -326,9 +337,11 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "DS_NAPTAN_STOP_DELTA",
+								"referenceName": "DS_NAPTAN_STOP_CSV_DEST",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"FileName": "Naptan"
+								}
 							}
 						]
 					}
@@ -340,7 +353,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_NAPTAN_STOP_CSV')]",
-				"[concat(variables('factoryId'), '/datasets/DS_NAPTAN_STOP_DELTA')]",
+				"[concat(variables('factoryId'), '/datasets/DS_NAPTAN_STOP_CSV_DEST')]",
 				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
 			]
 		},
@@ -504,15 +517,405 @@
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "Xml",
+				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "HttpServerLocation"
+						"type": "HttpServerLocation",
+						"relativeUrl": "csv"
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\n",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "ATCOCode",
+						"type": "String"
+					},
+					{
+						"name": "NaptanCode",
+						"type": "String"
+					},
+					{
+						"name": "PlateCode",
+						"type": "String"
+					},
+					{
+						"name": "CleardownCode",
+						"type": "String"
+					},
+					{
+						"name": "CommonName",
+						"type": "String"
+					},
+					{
+						"name": "CommonNameLang",
+						"type": "String"
+					},
+					{
+						"name": "ShortCommonName",
+						"type": "String"
+					},
+					{
+						"name": "ShortCommonNameLang",
+						"type": "String"
+					},
+					{
+						"name": "Landmark",
+						"type": "String"
+					},
+					{
+						"name": "LandmarkLang",
+						"type": "String"
+					},
+					{
+						"name": "Street",
+						"type": "String"
+					},
+					{
+						"name": "StreetLang",
+						"type": "String"
+					},
+					{
+						"name": "Crossing",
+						"type": "String"
+					},
+					{
+						"name": "CrossingLang",
+						"type": "String"
+					},
+					{
+						"name": "Indicator",
+						"type": "String"
+					},
+					{
+						"name": "IndicatorLang",
+						"type": "String"
+					},
+					{
+						"name": "Bearing",
+						"type": "String"
+					},
+					{
+						"name": "NptgLocalityCode",
+						"type": "String"
+					},
+					{
+						"name": "LocalityName",
+						"type": "String"
+					},
+					{
+						"name": "ParentLocalityName",
+						"type": "String"
+					},
+					{
+						"name": "GrandParentLocalityName",
+						"type": "String"
+					},
+					{
+						"name": "Town",
+						"type": "String"
+					},
+					{
+						"name": "TownLang",
+						"type": "String"
+					},
+					{
+						"name": "Suburb",
+						"type": "String"
+					},
+					{
+						"name": "SuburbLang",
+						"type": "String"
+					},
+					{
+						"name": "LocalityCentre",
+						"type": "String"
+					},
+					{
+						"name": "GridType",
+						"type": "String"
+					},
+					{
+						"name": "Easting",
+						"type": "String"
+					},
+					{
+						"name": "Northing",
+						"type": "String"
+					},
+					{
+						"name": "Longitude",
+						"type": "String"
+					},
+					{
+						"name": "Latitude",
+						"type": "String"
+					},
+					{
+						"name": "StopType",
+						"type": "String"
+					},
+					{
+						"name": "BusStopType",
+						"type": "String"
+					},
+					{
+						"name": "TimingStatus",
+						"type": "String"
+					},
+					{
+						"name": "DefaultWaitTime",
+						"type": "String"
+					},
+					{
+						"name": "Notes",
+						"type": "String"
+					},
+					{
+						"name": "NotesLang",
+						"type": "String"
+					},
+					{
+						"name": "AdministrativeAreaCode",
+						"type": "String"
+					},
+					{
+						"name": "CreationDateTime",
+						"type": "String"
+					},
+					{
+						"name": "ModificationDateTime",
+						"type": "String"
+					},
+					{
+						"name": "RevisionNumber",
+						"type": "String"
+					},
+					{
+						"name": "Modification",
+						"type": "String"
+					},
+					{
+						"name": "Status",
+						"type": "String"
 					}
-				}
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_NAPTAN_HTTP')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_NAPTAN_STOP_CSV_DEST')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FileName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().FileName",
+							"type": "Expression"
+						},
+						"folderPath": "Naptan",
+						"fileSystem": "staging"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "ATCOCode",
+						"type": "String"
+					},
+					{
+						"name": "NaptanCode",
+						"type": "String"
+					},
+					{
+						"name": "PlateCode",
+						"type": "String"
+					},
+					{
+						"name": "CleardownCode",
+						"type": "String"
+					},
+					{
+						"name": "CommonName",
+						"type": "String"
+					},
+					{
+						"name": "CommonNameLang",
+						"type": "String"
+					},
+					{
+						"name": "ShortCommonName",
+						"type": "String"
+					},
+					{
+						"name": "ShortCommonNameLang",
+						"type": "String"
+					},
+					{
+						"name": "Landmark",
+						"type": "String"
+					},
+					{
+						"name": "LandmarkLang",
+						"type": "String"
+					},
+					{
+						"name": "Street",
+						"type": "String"
+					},
+					{
+						"name": "StreetLang",
+						"type": "String"
+					},
+					{
+						"name": "Crossing",
+						"type": "String"
+					},
+					{
+						"name": "CrossingLang",
+						"type": "String"
+					},
+					{
+						"name": "Indicator",
+						"type": "String"
+					},
+					{
+						"name": "IndicatorLang",
+						"type": "String"
+					},
+					{
+						"name": "Bearing",
+						"type": "String"
+					},
+					{
+						"name": "NptgLocalityCode",
+						"type": "String"
+					},
+					{
+						"name": "LocalityName",
+						"type": "String"
+					},
+					{
+						"name": "ParentLocalityName",
+						"type": "String"
+					},
+					{
+						"name": "GrandParentLocalityName",
+						"type": "String"
+					},
+					{
+						"name": "Town",
+						"type": "String"
+					},
+					{
+						"name": "TownLang",
+						"type": "String"
+					},
+					{
+						"name": "Suburb",
+						"type": "String"
+					},
+					{
+						"name": "SuburbLang",
+						"type": "String"
+					},
+					{
+						"name": "LocalityCentre",
+						"type": "String"
+					},
+					{
+						"name": "GridType",
+						"type": "String"
+					},
+					{
+						"name": "Easting",
+						"type": "String"
+					},
+					{
+						"name": "Northing",
+						"type": "String"
+					},
+					{
+						"name": "Longitude",
+						"type": "String"
+					},
+					{
+						"name": "Latitude",
+						"type": "String"
+					},
+					{
+						"name": "StopType",
+						"type": "String"
+					},
+					{
+						"name": "BusStopType",
+						"type": "String"
+					},
+					{
+						"name": "TimingStatus",
+						"type": "String"
+					},
+					{
+						"name": "DefaultWaitTime",
+						"type": "String"
+					},
+					{
+						"name": "Notes",
+						"type": "String"
+					},
+					{
+						"name": "NotesLang",
+						"type": "String"
+					},
+					{
+						"name": "AdministrativeAreaCode",
+						"type": "String"
+					},
+					{
+						"name": "CreationDateTime",
+						"type": "String"
+					},
+					{
+						"name": "ModificationDateTime",
+						"type": "String"
+					},
+					{
+						"name": "RevisionNumber",
+						"type": "String"
+					},
+					{
+						"name": "Modification",
+						"type": "String"
+					},
+					{
+						"name": "Status",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
 			]
 		},
 		{
@@ -528,7 +931,7 @@
 				"type": "AzureDatabricksDeltaLakeDataset",
 				"typeProperties": {
 					"database": "raw",
-					"table": "Naptan"
+					"table": "naptan"
 				},
 				"schema": []
 			},
