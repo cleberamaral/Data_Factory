@@ -1,0 +1,16 @@
+{
+	"name": "DS_NAPTAN_STOP_XML",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_NAPTAN_HTTP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Xml",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		}
+	}
+}

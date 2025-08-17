@@ -1,0 +1,16 @@
+{
+	"name": "DS_NAPTAN_STOP_DELTA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DATABRICKS_DELTA",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"typeProperties": {
+			"database": "raw",
+			"table": "Naptan"
+		},
+		"schema": []
+	}
+}
