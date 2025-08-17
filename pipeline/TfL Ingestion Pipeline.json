@@ -41,6 +41,252 @@
 							"type": "LinkedServiceReference"
 						},
 						"path": "staging/Naptan"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['AtcoCode']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['NaptanCode']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Descriptor']['CommonName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Descriptor']['ShortCommonName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Descriptor']['Street']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Descriptor']['Indicator']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Place']['NptgLocalityRef']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Place']['LocalityCentre']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Place']['Location']['Translation']['GridType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Place']['Location']['Translation']['Easting']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Place']['Location']['Translation']['Northing']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Place']['Location']['Translation']['Longitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['Place']['Location']['Translation']['Latitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopClassification']['StopType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopClassification']['OnStreet']['Bus']['BusStopType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopClassification']['OnStreet']['Bus']['TimingStatus']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopClassification']['OnStreet']['Bus']['MarkedPoint']['Bearing']['CompassPoint']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopAreas']['StopAreaRef']['@Modification']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopAreas']['StopAreaRef']['@Status']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopAreas']['StopAreaRef']['@CreationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopAreas']['StopAreaRef']['@ModificationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['StopAreas']['StopAreaRef']['_value_']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['AdministrativeAreaRef']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['@CreationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['@ModificationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['@Modification']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['@RevisionNumber']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['StopPoints']['StopPoint'][0]['@Status']"
+								}
+							},
+							{
+								"source": {
+									"path": "['StopAreaCode']"
+								}
+							},
+							{
+								"source": {
+									"path": "['Name']"
+								}
+							},
+							{
+								"source": {
+									"path": "['AdministrativeAreaRef']"
+								}
+							},
+							{
+								"source": {
+									"path": "['StopAreaType']"
+								}
+							},
+							{
+								"source": {
+									"path": "['Location']['Translation']['GridType']"
+								}
+							},
+							{
+								"source": {
+									"path": "['Location']['Translation']['Easting']"
+								}
+							},
+							{
+								"source": {
+									"path": "['Location']['Translation']['Northing']"
+								}
+							},
+							{
+								"source": {
+									"path": "['Location']['Translation']['Longitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "['Location']['Translation']['Latitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "['@CreationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "['@ModificationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "['@Modification']"
+								}
+							},
+							{
+								"source": {
+									"path": "['@RevisionNumber']"
+								}
+							},
+							{
+								"source": {
+									"path": "['@Status']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['@CreationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['@ModificationDateTime']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['@Modification']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['@RevisionNumber']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['@FileName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['NaPTAN']['@SchemaVersion']"
+								}
+							}
+						],
+						"collectionReference": "$['NaPTAN']['StopAreas']['StopArea']"
 					}
 				},
 				"inputs": [
