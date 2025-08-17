@@ -20,7 +20,7 @@
 					"type": "Expression"
 				},
 				"folderPath": "Naptan",
-				"fileSystem": "staging"
+				"fileSystem": "raw"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
