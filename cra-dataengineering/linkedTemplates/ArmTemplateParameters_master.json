@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "cra-dataengineering"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"Databricks_Demo_Cluster_accessToken": {
+			"value": ""
+		},
+		"LS_DATABRICKS_DELTA_accessToken": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://rawdatastorage1.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "demo-server-aw.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "DemoDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "cleberamaral"
+		},
+		"Databricks_Demo_Cluster_properties_typeProperties_existingClusterId": {
+			"value": "0809-121629-26pkxfam"
+		},
+		"LS_NAPTAN_HTTP_properties_typeProperties_url": {
+			"value": "https://beta-naptan.dft.gov.uk/Download/National/csv"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
