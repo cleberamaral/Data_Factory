@@ -1,0 +1,13 @@
+{
+	"name": "LS_NAPTAN_HTTP",
+	"properties": {
+		"description": "Linked Service for accessing the NaPTAN API via HTTP",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://beta-naptan.dft.gov.uk/Download/National/xml",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
